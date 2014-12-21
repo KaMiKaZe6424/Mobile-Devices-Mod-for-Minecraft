@@ -1,0 +1,20 @@
+This is the source-code of my Mobile Devices mod.
+
+To edit this code, you need to download the minecraft forge source package,
+and move the main folder into the src folder of the previously downloaded
+forge development evironment.
+
+In the '~/src/lib' folder there are one ore more apis and libraries.
+These are needed by my mod and need to be in the classpath of the
+eclipse project. To add these to the gradle builder, you need to add
+the following lines to the bottom of the build.gradle file:
+    
+    dependencies {
+        compile files('src/lib/snakeyaml-1.11.jar')
+    }
+
+Credits:
+All credits for libraries and/or apis in the '~/src/lib' folder belong to
+their respective owners.
+Short list (in case more will be added in the future):
+    -SnakeYaml: All credits belong to the SnakeYaml development team (Homepage: https://code.google.com/p/snakeyaml/)

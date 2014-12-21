@@ -1,0 +1,16 @@
+[
+{
+  "modid": "mdmod",
+  "name": "Mobile Devices Mod",
+  "description": "Add tablets and cell phones to Minecraft!!!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["KaMiKaze6424"],
+  "credits": "KaMiKaZe6424 for creating this mod, which includes the code and textures.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
