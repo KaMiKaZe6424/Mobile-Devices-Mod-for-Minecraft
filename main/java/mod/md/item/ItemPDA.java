@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import mod.md.MDMod;
 import mod.md.vm.Device;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,9 +24,9 @@ import net.minecraft.world.World;
 
 public class ItemPDA extends Item {
 	
-	private boolean isRunning = false;
 	Minecraft mc = Minecraft.getMinecraft();
 	Device dev;
+	DeviceScreen scr = new DeviceScreen();
 	
 	
 	public ItemPDA() {
@@ -36,7 +37,8 @@ public class ItemPDA extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		{
-			mc.displayGuiScreen(new DeviceScreen());
+			mc.displayGuiScreen(scr);
+			scr.displayNow();
 		}
 		return stack;
 	}
