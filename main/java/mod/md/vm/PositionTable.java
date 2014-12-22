@@ -51,7 +51,8 @@ public class PositionTable {
 				savep.mkdirs();
 				save.createNewFile();
 			}
-			yml.dump(links, new FileWriter(save));
+			System.out.println(links.toString());
+			yml.dump((links != null) ? links : new ArrayList<RouterLink>(), new FileWriter(save));
 			System.out.println(save.getAbsolutePath());
 		} catch (IOException e) {
 			e.printStackTrace();

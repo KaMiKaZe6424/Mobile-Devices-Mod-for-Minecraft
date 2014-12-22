@@ -1,6 +1,7 @@
 package mod.md;
 
 import mod.md.block.BlockRouter;
+import mod.md.item.ItemPDA;
 import mod.md.vm.PositionTable;
 import net.minecraft.creativetab.CreativeTabs;
 import cpw.mods.fml.common.Mod;
@@ -16,6 +17,8 @@ public class MDMod
     
     static PositionTable postab;
     
+    MDMod mod = this;
+    
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
@@ -24,6 +27,8 @@ public class MDMod
         
         registerBlocks();
         
+        registerItems();
+        
         System.out.println("Mobile Devices initialized.");
     }
     
@@ -31,8 +36,12 @@ public class MDMod
     	return postab;
     }
     
+    private void registerItems() {
+    	GameRegistry.registerItem(new ItemPDA().setCreativeTab(CreativeTabs.tabMisc).setTextureName("mdmod:PDA_1").setUnlocalizedName("PDA").setMaxStackSize(1), "PDA_1");
+    }
+    
     private void registerBlocks() {
-    	GameRegistry.registerBlock(BlockRouter.newInstance().setBlockName("Wireless Router").setCreativeTab(CreativeTabs.tabMisc), "Wireless Router");
+    	GameRegistry.registerBlock(BlockRouter.newInstance().setBlockName("Wireless Router").setCreativeTab(CreativeTabs.tabMisc).setBlockTextureName("mdmod:Router"), "Wireless Router");
     }
     
 }
