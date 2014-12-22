@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import mod.md.src.RouterLink;
@@ -41,7 +43,13 @@ public class PositionTable {
 	}
 	
 	public void deleteEntry(RouterLink link) {
-		links.remove(link);
+		Collection<RouterLink> del = new LinkedList<RouterLink>();
+		for (RouterLink l : links) {
+			if (link.getX() == l.getX() && link.getY() == l.getY() && link.getZ() == l.getZ() && link.getWorldName().equalsIgnoreCase(l.getWorldName())) {
+				del.add(l);
+			}
+		}
+		links.removeAll(del);
 		save();
 	}
 	
@@ -51,13 +59,13 @@ public class PositionTable {
 				savep.mkdirs();
 				save.createNewFile();
 			}
-			System.out.println(links.toString());
 			yml.dump((links != null) ? links : new ArrayList<RouterLink>(), new FileWriter(save));
-			System.out.println(save.getAbsolutePath());
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (NullPointerException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			try {
+				yml.dump((links != null) ? links : new ArrayList<RouterLink>(), new FileWriter(save));
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 	
