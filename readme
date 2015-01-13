@@ -1,11 +1,11 @@
 This is the source-code of my Mobile Devices mod.
 
-To edit this code, you need to download the minecraft forge source package,
+To edit and recompile this code, you need to download the minecraft forge source package,
 and move the main folder into the src folder of the previously downloaded
 forge development evironment.
 
 In the '~/src/lib' folder there are one ore more apis and libraries.
-These are needed by my mod and need to be in the classpath of the
+These are required by my mod and need to be in the classpath of the
 eclipse project. To add these to the gradle builder, you need to add
 the following lines to the bottom of the build.gradle file:
     

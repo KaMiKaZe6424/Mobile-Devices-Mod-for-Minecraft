@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -13,6 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 
+import scala.actors.threadpool.Arrays;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import mod.md.MDMod;
 import mod.md.vm.Device;
 import net.minecraft.client.Minecraft;
@@ -28,9 +32,13 @@ public class ItemPDA extends Item {
 	Device dev;
 	DeviceScreen scr = new DeviceScreen();
 	
+	public static File hdp;
+	
+	private long id;
+	
 	
 	public ItemPDA() {
-		dev = new Device();
+		dev = scr.getDevice();
 	}
 	
 	

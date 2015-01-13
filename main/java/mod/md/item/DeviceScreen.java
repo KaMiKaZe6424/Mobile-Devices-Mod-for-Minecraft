@@ -1,23 +1,27 @@
 package mod.md.item;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-import net.minecraft.client.Minecraft;
+import mod.md.vm.Device;
 import net.minecraft.client.gui.GuiScreen;
 
 public class DeviceScreen extends GuiScreen {
 	
-	JFrame dev;
+	Device dev;
+	JPanel bg;
+	JPanel screen;
+	
 	DeviceScreen scr = this;
 	
 	public DeviceScreen() {
-		dev = new JFrame();
+		dev = new Device();
 		init();
+		dev.setScreen(screen);
 		dev.setVisible(false);
 	}
 
@@ -25,13 +29,27 @@ public class DeviceScreen extends GuiScreen {
 		dev.setUndecorated(true);
 		dev.setSize(sx(), sy());
 		dev.setLocationRelativeTo(null);
-		dev.setBackground(new Color(15 ,15, 15));
 		dev.addFocusListener(fl);
-		dev.setLayout(new BorderLayout());
+		dev.getContentPane().setBackground(new Color(240 ,240, 240));
+		{
+			bg = new JPanel();
+			dev.add(bg);
+			bg.setLayout(null);
+			{
+				screen = new JPanel();
+				bg.add(screen);
+				screen.setBounds(10, 10, sx()-20, sy()-60);
+				screen.setBackground(Color.black);
+			}
+		}
 	}
 	
 	private final int sx() {
 		return 350;
+	}
+	
+	public Device getDevice() {
+		return dev;
 	}
 	
 	@Override
