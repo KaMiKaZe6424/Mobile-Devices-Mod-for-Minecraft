@@ -1,5 +1,6 @@
 package mod.md;
 
+import java.io.File;
 import java.util.logging.Level;
 
 import mod.md.block.BlockRouter;
@@ -13,6 +14,7 @@ import mod.md.vm.PositionTable;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -37,7 +39,9 @@ public class MDMod
     public void preInit(FMLPreInitializationEvent event)
     {
     	LogHelper.init();
-    	System.out.println("LogHelper ein");
+    	
+    	//ConfigHandler.init(event.getSuggestedConfigurationFile());	Works, but has no use yet. TODO Add config-options
+    	
     }
     
     @EventHandler

@@ -43,7 +43,7 @@ public class LogHelper {
 	}
 
 	public static void init() {
-		logger = LogManager.getLogger("[FML]MD-Mod");
+		logger = LogManager.getLogger("MD-Mod");
 	}
 
 	public static void log(Level logLevel, String message) {
