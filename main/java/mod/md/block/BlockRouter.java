@@ -15,6 +15,7 @@ import mod.md.src.RouterLink;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 
 public class BlockRouter extends Block {
@@ -38,7 +39,11 @@ public class BlockRouter extends Block {
 			link.setY(y);
 			link.setZ(z);
 			
+			System.out.println("router placed");
+			
 			MDMod.getPositionTable().addEntry(link);
+			
+			System.out.println(MDMod.getPositionTable().toString());
 			
 		}
 		return 0;

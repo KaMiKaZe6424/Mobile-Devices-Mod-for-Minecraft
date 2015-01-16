@@ -1,16 +1,29 @@
 package mod.md;
 
+import java.util.logging.Level;
+
 import mod.md.block.BlockRouter;
+import mod.md.config.ConfigHandler;
+import mod.md.config.MDBlocks;
+import mod.md.config.MDItms;
+import mod.md.config.Recipes;
+//import mod.md.config.Items;
 import mod.md.item.ItemPDA;
 import mod.md.vm.PositionTable;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid = MDMod.MODID, version = MDMod.VERSION)
+
 public class MDMod
 {
     public static final String MODID = "mdmod";
@@ -21,17 +34,37 @@ public class MDMod
     MDMod mod = this;
     
     @EventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+    	LogHelper.init();
+    	System.out.println("LogHelper ein");
+    }
+    
+    @EventHandler
     public void init(FMLInitializationEvent event)
     {
-        System.out.println("Initializing Mobile Devices Mod...");
+        LogHelper.info("Initializing Mobile Devices Mod...");
+        
         postab = new PositionTable();
         
         registerBlocks();
         
-        registerItems();
+        MDItms.registerItems();
         
-        System.out.println("Mobile Devices initialized.");
+        //Recipes.addRecipes();
+        
+        LogHelper.info("Mobile Devices initialized.");
     }
+    
+    public static final CreativeTabs tabMD = new CreativeTabs("mobiledevices")
+    {
+        @SideOnly(Side.CLIENT)
+        public Item getTabIconItem()
+        {
+            return MDItms.PDA;
+        }
+    };
+    
     
     public static PositionTable getPositionTable() {
     	return postab;
